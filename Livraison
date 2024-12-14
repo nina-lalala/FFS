@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau Dynamique des Entreprises</title>
+    <style>
+        body {
+            background-color: #2c2c2c;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px;
+            border: 1px solid #555555;
+            text-align: center;
+            color: #ffffff;
+        }
+        th {
+            background-color: #444444;
+        }
+        input {
+            width: 60px;
+            text-align: right;
+            background-color: #555555;
+            color: #ffffff;
+            border: 1px solid #777777;
+        }
+        button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #555555;
+            color: #ffffff;
+            border: 1px solid #777777;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #666666;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Tableau Dynamique des Entreprises et des Jours de la Semaine</h2>
+
+<!-- Bouton Reset -->
+<button onclick="resetTable()">Réinitialiser le tableau</button>
+
+<table>
+    <thead>
+        <tr>
+            <th>Entreprise</th>
+            <th>Dimanche</th>
+            <th>Lundi</th>
+            <th>Mardi</th>
+            <th>Mercredi</th>
+            <th>Jeudi</th>
+            <th>Vendredi</th>
+            <th>Samedi</th>
+            <th>Prix Unitaire</th>
+            <th>Total Hebdomadaire</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Exemple pour une entreprise -->
+        <tr>
+            <td>LSMC</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+
+        <!-- Ajouter d'autres entreprises ici -->
+<tr>
+            <td>LSPD</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>BCSO</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>SASP</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>STONK</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>MTP</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>PAWL</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>UPW</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>FDF</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>CJR</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>DMC</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>NG</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>BB</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>BAUN</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>TN</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>YN</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+<tr>
+            <td>CM</td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="quantity" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><input type="number" class="price" data-entreprise="LSMC" oninput="calculerTotal('LSMC')" placeholder="0"></td>
+            <td><span id="LSMC_total_week">0</span></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+    function calculerTotal(entreprise) {
+        // Récupérer toutes les quantités pour l'entreprise
+        const quantities = document.querySelectorAll(`input.quantity[data-entreprise="${entreprise}"]`);
+        const priceInput = document.querySelector(`input.price[data-entreprise="${entreprise}"]`);
+
+        let totalQuantity = 0;
+        quantities.forEach(input => {
+            totalQuantity += parseFloat(input.value) || 0;
+        });
+
+        // Récupérer le prix unitaire
+        const price = parseFloat(priceInput.value) || 0;
+
+        // Calculer le total hebdomadaire
+        const totalWeek = totalQuantity * price;
+
+        // Mettre à jour le total affiché
+        document.querySelector(`#${entreprise}_total_week`).textContent = totalWeek.toLocaleString('fr-FR', {
+            style: 'currency',
+            currency: 'USD'
+        });
+    }
+
+    function resetTable() {
+        // Réinitialiser toutes les entrées du tableau
+        document.querySelectorAll('input').forEach(input => {
+            input.value = '';
+        });
+
+        // Réinitialiser tous les totaux hebdomadaires
+        document.querySelectorAll('span[id$="_total_week"]').forEach(span => {
+            span.textContent = '0';
+        });
+    }
+</script>
+
+</body>
+</html>
